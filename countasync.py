@@ -13,14 +13,14 @@ async def count():
     # Prints a "report" to `stdout` before waiting for other "work."
     print("One")
 
-    # This function asynchronously wait for 1 second. This asynchronous wait simulates real work. More importantly,
+    # This call asynchronously waits for 1 second. This asynchronous wait simulates real work. More importantly,
     # it allows other work to run while we wait.
     await asyncio.sleep(1)
 
     # Print a "report" to `stdout` when "work" finished.
     print("Two")
 
-    # The call to `sleep` result in each "task" printing "One" to `stdout` before any other task printing "Two."
+    # The call to `sleep` results in each "task" printing "One" to `stdout` before any other task printing "Two."
     # Contrast this behavior with `countsync.py` in which each "task" prints **both** messages to `stdout` before
     # returning and allowing other "tasks" to run.
 
@@ -35,10 +35,10 @@ if __name__ == '__main__':
     # Start a performance counter
     start = time.perf_counter()
 
-    # Begin the asyncio event-loop executing the top-level asynchronous function.
+    # Begin the `asyncio` event-loop executing the top-level asynchronous function.
     asyncio.run(main())
 
-    # Calculate and report the elapsed time. Should be ~1. second because all the previous sleeps occur
+    # Calculate and report the elapsed time. Should be ~1.0 second because all the previous sleeps occur
     # **concurrently**.
     elapsed = time.perf_counter() - start
     print(f'{__file__} executed in {elapsed:0.2f} seconds.')
